@@ -1,6 +1,8 @@
 package com.moengage.moengage.features.news.ui
 
 import android.os.Bundle
+import android.view.View
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.moengage.moengage.databinding.ActivityNewsBinding
@@ -19,8 +21,12 @@ class NewsActivity : AppCompatActivity() {
         mBinding?.apply {
             wvItem.loadUrl(url.toString())
             wvItem.settings.javaScriptEnabled = true
-            wvItem.webViewClient = WebViewClient()
-        }
+            wvItem.webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView, url: String) {
+                    pbLoader.visibility = View.GONE
+                }
+            }
 
+        }
     }
 }
