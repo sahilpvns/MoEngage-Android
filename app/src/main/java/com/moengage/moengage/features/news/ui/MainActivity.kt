@@ -47,6 +47,6 @@ class MainActivity : AppCompatActivity() {
 
 
     fun shortItem() {
-        mAdapter?.updateData(ArrayList(mAdapter?.newsData?.sortedWith(compareByDescending<NewsInfo> { it.publishedAt })))
+        mAdapter?.updateData(mAdapter?.newsData?.sortedWith(compareByDescending<NewsInfo> { it.publishedAt })?.let { ArrayList(it) })
     }
 }
