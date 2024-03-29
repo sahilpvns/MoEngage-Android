@@ -2,7 +2,9 @@ package com.moengage.moengage.features.news.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.moengage.moengage.R
 import com.moengage.moengage.databinding.ActivityMainBinding
 import com.moengage.moengage.features.network.ApiCallBack
 import com.moengage.moengage.features.network.MEJsonRequest
@@ -26,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         mBinding?.rvList?.adapter = mAdapter
         initHomeApi()
         UIUtils.getToke()
+
+        mBinding?.ivSortNews?.setOnClickListener {
+            initHomeApi()
+            Toast.makeText(this, "News sort: Refresh", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initHomeApi() {
